@@ -1,0 +1,256 @@
+/* Contenedor principal del chat */
+.chat-container {
+    width: 100%;
+    max-width: 900px;
+    height: 90vh;
+    margin: 0 auto;
+    border-radius: 12px;
+    border: 1px solid #e1e5e9;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Header del chat */
+.chat-header {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.username {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Área de mensajes */
+.chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: rgba(102, 126, 234, 0.3);
+    border-radius: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+    background: rgba(102, 126, 234, 0.5);
+}
+
+/* Estilos de globos de mensajes */
+.message-bubble {
+    max-width: 75%;
+    margin-bottom: 12px;
+    animation: bubbleSlideIn 0.4s ease-out;
+    position: relative;
+}
+
+@keyframes bubbleSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.own-bubble {
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+.own-bubble .bubble-content {
+    background: #667eea;;
+    color: white;
+    border-radius: 20px 20px 5px 20px;
+    padding: 12px 16px 6px 16px;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+    position: relative;
+    word-wrap: break-word;
+}
+
+.own-bubble .bubble-content::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: -6px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-top: 8px solid #764ba2;
+    transform: rotate(45deg);
+}
+
+.own-bubble .user-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #002fff;
+    margin-bottom: 4px;
+    margin-left: 4px;
+}
+
+/* Globos de otros usuarios */
+.other-bubble {
+    align-self: flex-start;
+    margin-right: auto;
+}
+
+.other-bubble .user-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: #002fff;
+    margin-bottom: 4px;
+    margin-left: 4px;
+}
+
+.other-bubble .bubble-content {
+    background: #675cff;
+    color: #ffffff;
+    border-radius: 20px 20px 20px 5px;
+    padding: 12px 16px 6px 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    word-wrap: break-word;
+}
+
+.other-bubble .bubble-content::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -6px;
+    width: 0;
+    height: 0;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #f1f3f4;
+    transform: rotate(-45deg);
+}
+
+/* Contenido del globo */
+.bubble-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.bubble-text {
+    font-size: 15px;
+    line-height: 1.4;
+    word-break: break-word;
+    hyphens: auto;
+}
+
+.bubble-time {
+    align-self: flex-end;
+    font-size: 11px;
+    opacity: 0.7;
+    font-weight: 400;
+    margin-top: 2px;
+}
+
+/* Tiempo en globos propios */
+.own-bubble .bubble-time {
+    color: rgba(255, 255, 255);
+}
+
+/* Tiempo en globos de otros */
+.other-bubble .bubble-time {
+    color: rgba(255, 255, 255);
+}
+
+/* Área de input */
+.chat-input-container {
+    display: flex;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    gap: 12px;
+}
+
+.message-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    font-size: 15px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.message-input:focus {
+    border-color: rgba(255, 255, 255, 0.6);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.message-input::placeholder {
+    color: #999;
+}
+
+.send-button {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.send-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.send-button:active {
+    transform: translateY(0);
+}
+
+.send-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+}
