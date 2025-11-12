@@ -1,71 +1,89 @@
-@import "tailwindcss";
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-@theme {
-  --font-poppins: Poppins, sans-serif;
+/* Configuración del HTML y body */
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
-  @apply font-poppins;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* Fondo degradado que complementa el chat */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-attachment: fixed;
+  
+  /* Flexbox para centrar el contenido */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
 }
 
-.container-page > div:not(:has(form)) {
-  @apply h-lvh flex flex-col gap-4 justify-center items-center;
+/* Configuración para el contenedor principal */
+#root {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
-a {
-  @apply text-white hover:underline text-lg;
+/* Estilos para inputs en general */
+input, textarea, button {
+  font-family: inherit;
 }
 
-nav {
-  @apply fixed w-full;
+/* Mejora la selección de texto */
+::selection {
+  background: rgba(102, 126, 234, 0.3);
+  color: white;
 }
 
-nav,
-footer {
-  @apply flex gap-8 bg-purple-900 justify-center p-4 text-lg;
+/* Estilos para el scrollbar global */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-button {
-  @apply bg-purple-700 text-white py-2 p-2 rounded hover:bg-purple-800 w-48 text-lg cursor-pointer;
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
 }
 
-h1 {
-  @apply text-3xl font-bold text-center mb-12;
-  @apply bg-gradient-to-r from-violet-600 to-purple-600;
-  @apply bg-clip-text text-transparent;
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
 }
 
-h2 {
-  @apply text-2xl font-bold text-center mb-12;
-  @apply bg-gradient-to-r from-violet-300 to-purple-300;
-  @apply bg-clip-text text-transparent;
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
 }
 
-.container-page {
-  @apply min-h-screen flex items-center justify-center p-4;
-  @apply bg-gradient-to-br from-violet-50 to-purple-50 dark:from-gray-900 dark:to-gray-800;
+/* Responsive design */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+  
+  #root {
+    min-height: 100vh;
+  }
 }
 
-.container-page > div {
-  @apply bg-white dark:bg-gray-800 rounded-xl shadow-lg;
-  @apply p-8 border border-gray-200 dark:border-gray-700;
-  @apply w-full max-w-md;
-  @apply transition-all duration-200 hover:shadow-xl;
-}
-
-.container-page label {
-  @apply block text-sm font-medium text-gray-700 dark:text-gray-300;
-}
-
-.container-page > div > div:last-child > button {
-  @apply w-full mt-1 flex items-center justify-center gap-3;
-  @apply bg-violet-600 hover:bg-violet-700 active:bg-violet-800;
-  @apply text-white shadow-lg hover:shadow-xl;
-  @apply transition-all duration-200 ease-in-out;
-  @apply transform hover:scale-105 active:scale-95;
-  @apply focus:outline-none focus:ring-4 focus:ring-violet-300 focus:ring-offset-2;
-}
-
-.container-page > div > div:last-child > button img {
-  @apply w-6 h-6;
+@media (max-width: 480px) {
+  body {
+    padding: 5px;
+  }
 }
